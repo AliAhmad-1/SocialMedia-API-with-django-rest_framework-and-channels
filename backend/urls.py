@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/',include('app.urls')),
     path('api-auth/', include('drf_social_oauth2.urls',namespace='drf')),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
