@@ -18,7 +18,7 @@ SECRET_KEY =str(os.getenv('SECRET_KEY'))
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-# CSRF_TRUSTED_ORIGINS=['https://blog-dj.up.railway.app']
+CSRF_TRUSTED_ORIGINS=['https://fs-socialmedia-v1.vercel.app']
 
 # Application definition
 
