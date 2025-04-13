@@ -5,7 +5,7 @@ import os
 
 from dotenv import load_dotenv
 load_dotenv()
-
+import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -18,7 +18,7 @@ SECRET_KEY =str(os.getenv('SECRET_KEY'))
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+# CSRF_TRUSTED_ORIGINS=['https://blog-dj.up.railway.app']
 
 # Application definition
 
@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    "whitenoise.runserver_nostatic",#for deploy
+    'django.contrib.postgres',#for deploy
+
     'app',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'social_django', # pip install social-auth-app-django
     # for channels
     'channels',
+
+
 
     
 ]
@@ -67,6 +72,7 @@ AUTH_USER_MODEL='app.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",    #new
     'django.middleware.common.CommonMiddleware',
@@ -104,13 +110,16 @@ ASGI_APPLICATION = 'backend.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+DATABSE_URL="postgresql://postgres:JZSGBTGVQIHQtHrrBkKaygHazOZCRYVw@turntable.proxy.rlwy.net:42103/railway"
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+'default':dj_database_url.config(default=DATABSE_URL,conn_max_age=500)
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
