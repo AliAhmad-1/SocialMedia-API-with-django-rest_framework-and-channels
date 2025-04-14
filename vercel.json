@@ -16,8 +16,7 @@
                 "runtime": "python3.9",
                 "environment": {
                     "DJANGO_SETTINGS_MODULE": "backend.settings"
-                },
-                "asgi":"backend.asgi:application"
+                }
             }
         }
     ],
