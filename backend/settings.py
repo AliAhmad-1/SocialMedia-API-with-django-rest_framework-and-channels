@@ -18,7 +18,7 @@ SECRET_KEY =str(os.getenv('SECRET_KEY'))
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS=['https://fs-socialmedia-v1.vercel.app']
+CSRF_TRUSTED_ORIGINS=['https://social-media-api-with-django-rest-framework-and-channels.vercel.app']
 
 # Application definition
 
