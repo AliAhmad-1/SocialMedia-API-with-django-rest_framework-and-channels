@@ -8,7 +8,7 @@
             }
         },
         {
-            "src": "backend/wsgi.py",
+            "src": "backend/asgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "250mb",
@@ -26,7 +26,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "backend/wsgi.py"
+            "dest": "backend/asgi.py"
         }
     ]
 }
