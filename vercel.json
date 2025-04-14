@@ -17,6 +17,14 @@
                     "DJANGO_SETTINGS_MODULE": "backend.settings"
                 }
             }
+        },
+        {
+            "src": "backend/asgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "250mb",
+                "runtime": "python3.9"
+            }
         }
     ],
     "routes": [{
